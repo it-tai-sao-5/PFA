@@ -1,0 +1,57 @@
+:root {
+  color-scheme: dark;
+  --bg:#090b10;
+  --panel:#151923;
+  --line:#303645;
+  --text:#edf0f6;
+  --muted:#929bad;
+  --accent:#8c7cff;
+}
+* { box-sizing:border-box; }
+body {
+  margin:0; min-height:100vh; background:var(--bg); color:var(--text);
+  font-family:system-ui,-apple-system,"Segoe UI",sans-serif;
+}
+.app { width:min(1200px,100%); margin:auto; padding:18px; }
+header { display:flex; justify-content:space-between; align-items:center; gap:16px; margin-bottom:14px; }
+h1 { margin:0; font-size:22px; } h1 span { color:var(--accent); }
+p { margin:3px 0 0; color:var(--muted); font-size:13px; }
+.file, button {
+  border:1px solid var(--line); background:#202533; color:var(--text);
+  border-radius:8px; padding:10px 14px; cursor:pointer; font:inherit;
+}
+.file input { display:none; }
+button:disabled { opacity:.45; cursor:not-allowed; }
+.viewer {
+  position:relative; border:1px solid var(--line); border-radius:12px 12px 0 0;
+  overflow:hidden; background:#0c0f15;
+}
+canvas { display:block; width:100%; height:min(58vh,520px); min-height:300px; }
+.empty { position:absolute; inset:0; display:grid; place-items:center; color:var(--muted); pointer-events:none; }
+.controls {
+  display:flex; align-items:center; flex-wrap:wrap; gap:10px;
+  padding:11px; background:var(--panel); border:1px solid var(--line); border-top:0;
+}
+.controls label { display:flex; align-items:center; gap:7px; }
+input[type=range] { width:140px; accent-color:var(--accent); }
+#speedValue { color:var(--muted); }
+#info { margin-left:auto; color:var(--muted); font-size:13px; }
+.keyboard { display:flex; height:110px; overflow:hidden; background:#050608; border:1px solid var(--line); border-top:0; }
+.key {
+  position:relative; flex:1; min-width:15px; border:1px solid #222;
+  background:#f1f1f1; color:#111; border-radius:0 0 5px 5px;
+  display:flex; align-items:flex-end; justify-content:center;
+  padding-bottom:7px; font-size:10px; user-select:none; cursor:pointer;
+}
+.key.black {
+  flex:0 0 20px; height:68%; margin:0 -10px; z-index:2;
+  background:#111319; color:#ddd; border-color:#000;
+}
+.key.active { background:var(--accent); color:#fff; }
+.hint { text-align:center; }
+@media(max-width:600px) {
+  .app { padding:10px; } header { align-items:flex-start; }
+  h1 { font-size:18px; } .keyboard { height:90px; }
+  .key.black { flex-basis:15px; margin:0 -7px; }
+  #info { width:100%; margin-left:0; }
+}
