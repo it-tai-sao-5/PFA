@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Piano From Above Web</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="app">
+    <header>
+      <div>
+        <h1>Piano From Above <span>Web</span></h1>
+        <p>Browser-based MIDI piano roll</p>
+      </div>
+      <label class="file">
+        Open MIDI
+        <input id="midiFile" type="file" accept=".mid,.midi,audio/midi">
+      </label>
+    </header>
+
+    <section class="viewer">
+      <canvas id="roll"></canvas>
+      <div id="empty" class="empty">Open a .mid file to begin</div>
+    </section>
+
+    <section class="controls">
+      <button id="play" disabled>▶ Play</button>
+      <button id="stop" disabled>■ Stop</button>
+      <label>Speed <input id="speed" type="range" min=".25" max="2" step=".05" value="1"></label>
+      <output id="speedValue">1.00×</output>
+      <span id="info">No MIDI loaded</span>
+    </section>
+
+    <section class="keyboard" id="keyboard" aria-label="Piano keyboard"></section>
+    <p class="hint">Computer keys: A W S E D F T G Y H U J K</p>
+  </main>
+  <script src="app.js"></script>
+</body>
+</html>
